@@ -3,14 +3,12 @@
 #include <string>
 using namespace std;
 
-// TODO: Define default constructor
 Artist::Artist(){
    artistName="unknown";
    birthYear = -1;
    deathYear = -1;
 }
-// TODO: Define second constructor to initialize
-//       private fields (artistName, birthYear, deathYear)
+
 Artist::Artist(string s, int a, int b){
    artistName=s;
    birthYear = a;
@@ -26,8 +24,7 @@ int Artist::GetBirthYear(){
 int Artist::GetDeathYear(){
    return deathYear;
 }
-// TODO: Define PrintInfo() function
-//      If deathYear is entered as -1, only print birthYear
+
 
 void Artist::PrintInfo(){
    cout << "Artist: " << artistName<<" ";
