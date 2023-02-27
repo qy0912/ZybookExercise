@@ -254,6 +254,32 @@ void handlePersist(vector<Customer*>& CustomerList){
     cout<<"All information has been saved to save.txt"<<endl;
 }
 
+void handleShowAll(vector<Customer*>& CustomerList){
+    FileDao d(CustomerList);
+    vector<Customer*> v = d.readAlldata();
+    for(int i = 0; i< v.size() ; i++){
+        v.at(i)->PrintInfo();
+    }
+}
+
+void handleSearchCustomer(vector<Customer*>& CustomerList){
+    cout<<"Input the Customer Name: "<<endl;
+    string name;
+    cin>>name;
+    int count = 0;
+    for(int i = 0 ; i < CustomerList.size() ; i++){
+        if(CustomerList.at(i)->GetName() == name ){
+            CustomerList.at(i)->PrintInfo();
+            count++;
+        }
+    }
+    if(count == 0){
+        cout<<"No Customer with name of "<<name<<endl;
+    }
+
+
+}
+
 int main(){
     vector<Customer*> CustomerList;
     vector<BankAccount*> AccountList;
@@ -294,6 +320,10 @@ int main(){
             handleSortCustomer(CustomerList,AccountList);
         }else if(userChoice == "5"){
             handlePersist(CustomerList);
+        }else if(userChoice == "6"){
+            handleShowAll(CustomerList);
+        }else if(userChoice == "7"){
+            handleSearchCustomer(CustomerList);
         }
         else if(userChoice=="8"){
             cout<<"Thank You For Using the Banking System, Bye!"<<endl;

@@ -76,3 +76,14 @@ string Customer::GenerateSavingStr(){
     }
     return ret;
 }
+
+void Customer::PrintInfo(){
+    cout<<"Name: "<<CustomerName<<endl;
+    cout<<"Id: "<<CustomerId<<endl;
+    cout<<"Account Information:"<<endl;
+    if(Account==nullptr){
+        cout<<"No Account"<<endl;
+    }else{
+        Account->AccountDisplay();
+    }
+}

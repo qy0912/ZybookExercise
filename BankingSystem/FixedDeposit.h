@@ -16,6 +16,8 @@ class FixedDeposit : public BankAccount {
 
 	public:
                 FixedDeposit(Customer* owner, double openingBalance) :BankAccount(owner, openingBalance){};
+                FixedDeposit(Customer* customer, double openingBalance ,long accountNumber, long bsb , string bankName,string openDate)
+        :BankAccount(customer,openingBalance,accountNumber,bsb,bankName,openDate){};
                 double calcInterest(int years) override;
                 int GetTenure();
                 double GetDepositAmount();

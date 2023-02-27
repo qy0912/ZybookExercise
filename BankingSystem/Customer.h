@@ -2,6 +2,8 @@
 #define COSTOMERH
 #include <string>
 #include "BankAccount.h"
+#include "SavingAccount.h"
+#include "FixedDeposit.h"
 using namespace std;
 
 class Customer{
@@ -18,6 +20,7 @@ class Customer{
         void SetAccount(BankAccount* account);
         BankAccount* GetAccount();
         string GenerateSavingStr();
+        void PrintInfo();
         
 
     private:

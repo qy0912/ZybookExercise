@@ -14,6 +14,14 @@ BankAccount::BankAccount(Customer* customer, double openingBalance){
     Balance = openingBalance;
     OpeningDate = "01/01/2023";
 }
+BankAccount::BankAccount(Customer* customer, double openingBalance ,long accountNumber, long bsb , string bankName,string openDate){
+    Owner = customer;
+    AccountNumber = accountNumber;
+    BankName = bankName;
+    BSBCode = bsb;
+    Balance = openingBalance;
+    OpeningDate = openDate;
+}
 
 const string BankAccount::GetBankName(){
     return BankName;

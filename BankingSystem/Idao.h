@@ -2,6 +2,8 @@
 #define IDAOH
 
 #include "Customer.h"
+#include "SavingAccount.h"
+#include "FixedDeposit.h"
 #include <vector>
 
 
@@ -13,7 +15,7 @@ class Idao{
         vector<Customer*> CustomerInfo;
         Idao(vector<Customer*> Info){CustomerInfo = Info;};
         virtual void InfoToTxt() = 0;
-        virtual vector<Customer*> readAlldata();
+        virtual vector<Customer*> readAlldata() = 0 ;
 };
 
 #endif 

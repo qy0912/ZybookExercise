@@ -8,6 +8,7 @@ class Customer;
 class BankAccount{
     public:
         BankAccount(Customer* owner, double openingBalance);
+        BankAccount(Customer* owner, double openingBalance ,long accountNumber, long bsb , string bankName,string openDate);
         static long AccountCount;
         const string GetBankName();
         const long GetAccountNumber();

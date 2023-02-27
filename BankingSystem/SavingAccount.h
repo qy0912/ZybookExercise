@@ -13,6 +13,8 @@ class SavingAccount : public BankAccount {
 
 	public:
         SavingAccount(Customer* owner, double openingBalance) :BankAccount(owner, openingBalance){};
+        SavingAccount(Customer* customer, double openingBalance ,long accountNumber, long bsb , string bankName,string openDate)
+        :BankAccount(customer,openingBalance,accountNumber,bsb,bankName,openDate){};
 		bool GetSalaryAccount();
         double GetMinimumBalance();
         void SetSalaryAccount(bool isSal);

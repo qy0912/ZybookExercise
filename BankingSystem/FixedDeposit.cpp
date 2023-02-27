@@ -15,6 +15,7 @@ double FixedDeposit::GetDepositAmount(){
 }
 
 double FixedDeposit::FindInterestEarned(){
+    InterestEarned = Tenure*DepositAmount*0.08;
     return Tenure*DepositAmount*0.08;
 }
 

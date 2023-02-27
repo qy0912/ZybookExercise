@@ -14,7 +14,7 @@ using namespace std;
 class FileDao : public Idao{
     public:
         FileDao(vector<Customer*> fullInfo):Idao(fullInfo){};
-        void InfoToTxt(){
+        void InfoToTxt() override {
             ofstream f;
             f.open("save.txt");
             for(int i = 0 ; i< CustomerInfo.size() ;  i++){
@@ -23,7 +23,7 @@ class FileDao : public Idao{
             f.close();
         }
 
-        /*
+/*
     string ret = "";
     ret += "Saving";
     ret += " ";
@@ -35,7 +35,7 @@ class FileDao : public Idao{
     ret += SalaryAccount?"true ":"false ";
     ret += to_string(MinimumBalance);
 */
-        vector<Customer*> readAlldata(){
+        vector<Customer*> readAlldata() override{
             ifstream f;
             f.open("save.txt");
             vector<Customer*> ret;
@@ -60,11 +60,48 @@ class FileDao : public Idao{
                 if(acctype=="N/A"){
                     newCust->SetAccount(nullptr);
                 }else if(acctype=="Saving"){
-                    
+                    string name;
+                    s>>name;
+                    long accNumber;
+                    s>>accNumber;
+                    long BSB;
+                    s>>BSB;
+                    double balance;
+                    s>>balance;
+                    string open;
+                    s>> open;
+                    string isSal;
+                    s>> isSal;
+                    bool Sal = isSal=="true"?true:false;
+                    double mini;
+                    s>>mini;
+                    SavingAccount* newAcc = new SavingAccount(newCust, balance ,accNumber, BSB , name, open);
+                    newAcc->SetMinimum(mini);
+                    newAcc->SetSalaryAccount(Sal);
+                    newCust->SetAccount(newAcc);
                 }else if(acctype=="Fixed"){
-
+                    string name;
+                    s>>name;
+                    long accNumber;
+                    s>>accNumber;
+                    long BSB;
+                    s>>BSB;
+                    double balance;
+                    s>>balance;
+                    string open;
+                    s>> open;
+                    double  DepositAmount;
+                    s>>DepositAmount;
+                    int Tenure;
+                    s>>Tenure;
+                    double InterestEarned;
+                    s>>InterestEarned;
+                    FixedDeposit* newAcc = new FixedDeposit(newCust, balance ,accNumber, BSB , name, open);
+                    newAcc->SetDepositAmount(DepositAmount);
+                    newAcc->SetTenure(Tenure);
+                    newAcc->FindInterestEarned();
+                    newCust->SetAccount(newAcc);
                 }
-
                 ret.push_back(newCust);
             }
             f.close();
